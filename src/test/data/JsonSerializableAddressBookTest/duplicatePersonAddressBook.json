@@ -3,22 +3,39 @@
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "alice@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
+    "gender": "F",
     "involvement": "Math class",
-    "tagged": [ "friends" ],
+    "address": "123, Jurong West Ave 6, #08-111",
     "emergencyContact" : "95614132",
     "formClass" : "4E1",
-    "gender": "F",
-    "medicalHistory": ""
+    "medicalHistory": "",
+    "tagged": [ "friends" ]
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "pauline@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
+    "gender": "F",
     "involvement": "Math class",
+    "address": "123, Jurong West Ave 6, #08-111",
     "emergencyContact" : "95614132",
     "formClass" : "4E1",
+    "medicalHistory" : ""
+  } ],
+  "teachers": [ {
+    "name": "Alice Pauline",
+    "phone": "94351253",
+    "email": "alice@example.com",
     "gender": "F",
-    "medicalHistory": ""
-  } ]
+    "involvement": "Math HOD",
+    "officeTable": "1",
+    "tagged": [ "Colleague" ]
+  }, {
+    "name": "Alice Pauline",
+    "phone": "94351253",
+    "email": "pauline@example.com",
+    "gender": "F",
+    "involvement": "Math HOD",
+    "officeTable": "1"
+  } ],
+  "meetings": []
 }

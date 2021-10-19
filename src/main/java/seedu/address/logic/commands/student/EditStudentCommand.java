@@ -2,15 +2,9 @@ package seedu.address.logic.commands.student;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMERGENCY_CONTACT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FORM_CLASS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INVOLVEMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 
@@ -21,46 +15,39 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.descriptors.EditStudentDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.FormClass;
-import seedu.address.model.person.Gender;
-import seedu.address.model.person.MedicalHistory;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Student;
+import seedu.address.model.person.student.Address;
+import seedu.address.model.person.student.FormClass;
+import seedu.address.model.person.student.MedicalHistory;
+import seedu.address.model.person.student.Student;
 
 /**
  * Edits the fields of an existing student in the New Address Book.
  */
 public class EditStudentCommand extends EditCommand {
-
+    public static final String TARGET = "student";
     public static final String COMMAND_WORD = "editStudent";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
-            + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_GENDER + "GENDER] "
-            + "[" + PREFIX_FORM_CLASS + "FORM CLASS] "
-            + "[" + PREFIX_INVOLVEMENT + "INVOLVEMENT] "
-            + "[" + PREFIX_TAG + "TAG] "
-            + "[" + PREFIX_EMERGENCY_CONTACT + "EMERGENCY CONTACT]...\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+    public static final String MESSAGE_EDIT_STUDENT_SUCCESS = "Edited Student: %1$s";
+    public static final String MESSAGE_DUPLICATE_STUDENT = String.format(EditCommand.MESSAGE_DUPLICATE_PERSON, TARGET);
+    public static final String MESSAGE_USAGE = COMMAND_WORD + String.format(EditCommand.MESSAGE_USAGE, TARGET)
+        + "[" + PREFIX_ADDRESS + "ADDRESS] "
+        + "[" + PREFIX_FORM_CLASS + "FORM CLASS] "
+        + "[" + PREFIX_EMERGENCY_CONTACT + "EMERGENCY CONTACT] "
+        + "[" + PREFIX_TAG + "TAG]...\n"
+        + "Example: " + COMMAND_WORD + EditCommand.EXAMPLE_USAGE;
 
-    public final EditStudentDescriptor editStudentDescriptor;
     private final Index index;
+    private final EditStudentDescriptor editStudentDescriptor;
 
     /**
-     * @param index                 of the person in the filtered person list to edit
+     * @param index of the student in the filtered student list to edit
      * @param editStudentDescriptor details to edit the student with
      */
     public EditStudentCommand(Index index, EditStudentDescriptor editStudentDescriptor) {
         requireNonNull(editStudentDescriptor);
         requireNonNull(index);
+
         this.index = index;
         this.editStudentDescriptor = new EditStudentDescriptor(editStudentDescriptor);
     }
@@ -75,30 +62,30 @@ public class EditStudentCommand extends EditCommand {
         Phone updatedEmergencyContact =
                 editStudentDescriptor.getEmergencyContact().orElse(studentToEdit.getEmergencyContact());
         FormClass updatedFormClass = editStudentDescriptor.getFormClass().orElse(studentToEdit.getFormClass());
-        Gender updatedGender = editStudentDescriptor.getGender().orElse(studentToEdit.getGender());
+        Address updatedAddress = editStudentDescriptor.getAddress().orElse(studentToEdit.getAddress());
         MedicalHistory updatedMedicalHistory = studentToEdit.getMedicalHistory(); //edit command does not edit medical
-        return new Student(person, updatedEmergencyContact, updatedFormClass, updatedGender, updatedMedicalHistory);
+        return new Student(person, updatedEmergencyContact, updatedFormClass, updatedAddress, updatedMedicalHistory);
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Student> lastShownList = model.getFilteredStudentList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_STUDENT_DISPLAYED_INDEX);
         }
 
-        Student studentToEdit = (Student) lastShownList.get(index.getZeroBased());
+        Student studentToEdit = lastShownList.get(index.getZeroBased());
         Student editedStudent = createdEditedStudent(studentToEdit, editStudentDescriptor);
 
-        if (!studentToEdit.isSamePerson(editedStudent) && model.hasPerson(editedStudent)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        if (!studentToEdit.isSameStudent(editedStudent) && model.hasStudent(editedStudent)) {
+            throw new CommandException(MESSAGE_DUPLICATE_STUDENT);
         }
 
-        model.setPerson(studentToEdit, editedStudent);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedStudent));
+        model.setStudent(studentToEdit, editedStudent);
+        model.updateFilteredStudentList(Model.PREDICATE_SHOW_ALL_STUDENTS);
+        return new CommandResult(String.format(MESSAGE_EDIT_STUDENT_SUCCESS, editedStudent));
     }
 
     @Override

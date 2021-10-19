@@ -38,7 +38,8 @@ NewAddressBook is a **desktop app built for secondary school teachers** handling
 
    * **`list`** : Lists all contacts.
 
-   * **`student`**`student n/John Doe p/94629424 e/j77@example.com a/George street, block 123, #01-01 f/3A2 g/M i/Math class em/92696977 m/Asthma` : Adds a student named `John Doe` to NewAddressBook.
+   * **`student`**`
+     student n/John Doe p/98765432 e/johnd@example.com g/M a/311, Clementi Ave 2, #02-25 f/3E1 em/999 i/Math class t/naughty ` : Adds a student named `John Doe` to NewAddressBook.
 
    * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
 
@@ -116,9 +117,8 @@ A teacher can have any number of tags (including 0), such as whether he/she is a
 </div>
 
 Examples:
-* `teacher n/Gabe p/91234567 e/gabe@example.com i/Lunch buddy`
-* `teacher n/Lebron p/91234567 e/lbj@example.com a/George street, block 123, #01-01 i/Math HOD
-t/relief`
+* `teacher n/Gabe p/91234567 e/gabe@example.com g/M o/151 i/Lunch buddy`
+* `teacher n/Lebron p/91234567 e/lbj@example.com g/F o/12 i/Math HOD t/relief`
 
 ### Adding a medical history to a student: `medical`
 
@@ -285,9 +285,10 @@ _Details coming soon ..._
 Action | Format, Examples
 --------|------------------
 **Student** | `student n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS f/FORM_CLASS g/GENDER i/INVOLVEMENT em/EMERGENCY_NUMBER [m/MEDICAL_HISTORY]…​ [t/TAG]…​` <br> e.g., `student n/James p/94629424 e/j77@example.com a/George street, block 123, #01-01 f/3A2 g/M i/Math class em/92696977 m/asthma t/representative`
+**Teacher** | `teacher n/NAME p/PHONE_NUMBER e/EMAIL g/GENDER o/OFFICE_TABLE_NUMBER i/INVOLVEMENT [t/TAG]…​` <br> e.g., `teacher n/Gabe p/91234567 e/gabe@example.com g/M o/151 i/Lunch buddy`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit<Teacher/Student> INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`editStudent 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Copy** | `copy f/FIELD` <br> e.g., `copy f/email`
 **List** | `list`

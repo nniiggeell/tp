@@ -3,10 +3,19 @@
     "name": "Hans Muster",
     "phone": "9482424",
     "email": "invalid@email!3e",
-    "address": "4th street",
+    "gender" : "N",
     "involvement": "Math class",
+    "address": "4th street",
     "emergencyContact" : "95614132",
-    "formClass" : "4E1",
-    "gender" : "N"
-  } ]
+    "formClass" : "4E1"
+  } ],
+  "teachers": [ {
+    "name": "Hans Muster",
+    "phone": "9482424",
+    "email": "invalid@email!3e",
+    "gender" : "N",
+    "involvement": "Math class",
+    "officeTable": "1"
+  } ],
+  "meetings": []
 }

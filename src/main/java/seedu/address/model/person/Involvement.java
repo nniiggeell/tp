@@ -18,7 +18,7 @@ public class Involvement {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String involvement;
+    public final String value;
 
     /**
      * Constructs a {@code Involvement}.
@@ -28,7 +28,7 @@ public class Involvement {
     public Involvement(String i) {
         requireNonNull(i);
         checkArgument(isValidInvolvement(i), MESSAGE_CONSTRAINTS);
-        involvement = i;
+        value = i;
     }
 
     /**
@@ -40,18 +40,18 @@ public class Involvement {
 
     @Override
     public String toString() {
-        return involvement;
+        return value;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Involvement // instanceof handles nulls
-                && involvement.equals(((Involvement) other).involvement)); // state check
+                && value.equals(((Involvement) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return involvement.hashCode();
+        return value.hashCode();
     }
 }

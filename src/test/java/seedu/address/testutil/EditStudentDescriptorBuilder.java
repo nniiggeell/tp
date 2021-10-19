@@ -5,18 +5,18 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.descriptors.EditStudentDescriptor;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.FormClass;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Involvement;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Student;
+import seedu.address.model.person.student.Address;
+import seedu.address.model.person.student.FormClass;
+import seedu.address.model.person.student.Student;
 import seedu.address.model.tag.Tag;
 
 /**
- * A utility class to help with building EditPersonDescriptor objects.
+ * A utility class to help with building EditStudentDescriptor objects.
  */
 public class EditStudentDescriptorBuilder {
 
@@ -39,6 +39,7 @@ public class EditStudentDescriptorBuilder {
         descriptor.setPhone(student.getPhone());
         descriptor.setEmail(student.getEmail());
         descriptor.setAddress(student.getAddress());
+        descriptor.setGender(student.getGender());
         descriptor.setInvolvement(student.getInvolvement());
         descriptor.setTags(student.getTags());
         descriptor.setEmergencyContact(student.getEmergencyContact());
@@ -78,7 +79,7 @@ public class EditStudentDescriptorBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditStudentDescriptor}
      * that we are building.
      */
     public EditStudentDescriptorBuilder withTags(String... tags) {
@@ -88,10 +89,11 @@ public class EditStudentDescriptorBuilder {
     }
 
     /**
-     * Sets the Emergency Contact of the {@code EditStudentDescriptor} that we are building.
+     * Parses the {@code emergencyContact} into a {@code Phone} of the {@code EditStudentDescriptor}
+     * that we are building.
      */
-    public EditStudentDescriptorBuilder withEmergencyContact(String phone) {
-        descriptor.setEmergencyContact(new Phone(phone));
+    public EditStudentDescriptorBuilder withEmergencyContact(String emergencyContact) {
+        descriptor.setEmergencyContact(new Phone(emergencyContact));
         return this;
     }
 
@@ -112,7 +114,7 @@ public class EditStudentDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Gender} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Gender} of the {@code EditStudentDescriptor} that we are building.
      */
     public EditStudentDescriptorBuilder withGender(String gender) {
         descriptor.setGender(new Gender(gender));

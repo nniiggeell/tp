@@ -32,8 +32,10 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private StudentListPanel studentListPanel;
+    private TeacherListPanel teacherListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private MeetingWindow meetingWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -42,7 +44,13 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private MenuItem meetingMenuItem;
+
+    @FXML
+    private StackPane studentListPanelPlaceholder;
+
+    @FXML
+    private StackPane teacherListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -63,9 +71,13 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
+
         setAccelerators();
 
         helpWindow = new HelpWindow();
+
+        meetingWindow = new MeetingWindow();
+        meetingWindow.setWindowDefaultSize(new GuiSettings(500, 600, 191, 45));
     }
 
     public Stage getPrimaryStage() {
@@ -110,8 +122,11 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        studentListPanel = new StudentListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(studentListPanel.getRoot());
+        studentListPanel = new StudentListPanel(logic.getFilteredStudentList());
+        studentListPanelPlaceholder.getChildren().add(studentListPanel.getRoot());
+
+        teacherListPanel = new TeacherListPanel(logic.getFilteredTeacherList());
+        teacherListPanelPlaceholder.getChildren().add(teacherListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -147,6 +162,19 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Opens the meeting window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleMeeting() {
+        if (!meetingWindow.isShowing()) {
+            meetingWindow.show();
+            meetingWindow.fillInnerParts(logic.getMeetingList());
+        } else {
+            meetingWindow.focus();
+        }
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -160,11 +188,16 @@ public class MainWindow extends UiPart<Stage> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
+        meetingWindow.hide();
         primaryStage.hide();
     }
 
-    public StudentListPanel getPersonListPanel() {
+    public StudentListPanel getStudentListPanel() {
         return studentListPanel;
+    }
+
+    public TeacherListPanel getTeacherListPanel() {
+        return teacherListPanel;
     }
 
     /**

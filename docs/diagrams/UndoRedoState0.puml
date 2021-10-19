@@ -3,9 +3,9 @@
 skinparam ClassFontColor #000000
 skinparam ClassBorderColor #000000
 
-title Initial state
+title After app starts up
 
-package States {
+package Stack {
     class State1 as "__ab0:AddressBook__"
     class State2 as "__ab1:AddressBook__"
     class State3 as "__ab2:AddressBook__"
@@ -15,6 +15,6 @@ State2 -[hidden]right-> State3
 hide State2
 hide State3
 
-class Pointer as "Current State" #FFFFF
+class Pointer as "Front of stack" #FFFFFF
 Pointer -up-> State1
 @end

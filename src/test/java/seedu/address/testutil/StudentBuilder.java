@@ -3,15 +3,15 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.FormClass;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Involvement;
-import seedu.address.model.person.MedicalHistory;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Student;
+import seedu.address.model.person.student.Address;
+import seedu.address.model.person.student.FormClass;
+import seedu.address.model.person.student.MedicalHistory;
+import seedu.address.model.person.student.Student;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -28,7 +28,7 @@ public class StudentBuilder {
     public static final String DEFAULT_INVOLVEMENT = "Math class";
     public static final String DEFAULT_FORM_CLASS = "4E1";
     public static final String DEFAULT_GENDER = "M";
-    public static final String DEFAULT_MEDICAL_HISTORY = "ADHD";
+    public static final String DEFAULT_MEDICAL_HISTORY = "";
 
     private Name name;
     private Phone phone;
@@ -160,8 +160,17 @@ public class StudentBuilder {
      * @return the student.
      */
     public Student build() {
-        return new Student(name, phone, email, address, involvement, tags, emergencyContact, formClass, gender,
-                medicalHistory);
+        return new Student(name, phone, email, gender, involvement, address,
+            emergencyContact, formClass, tags, medicalHistory);
+    }
+
+    /**
+     * Builds the {@code Student} for edit tests.
+     * @return the student.
+     */
+    public Student buildForEdit() {
+        return new Student(name, phone, email, gender, involvement, address,
+            emergencyContact, formClass, tags, new MedicalHistory("ADHD"));
     }
 
 }

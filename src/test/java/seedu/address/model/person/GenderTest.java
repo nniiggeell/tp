@@ -19,7 +19,7 @@ public class GenderTest {
     }
 
     @Test
-    public void isValidInvolvement() {
+    public void isValidGender() {
         // null
         assertThrows(NullPointerException.class, () -> Gender.isValidGender(null));
 

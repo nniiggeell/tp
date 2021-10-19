@@ -29,13 +29,14 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
 /**
- * Parses input arguments and creates a new EditCommand object
+ * Parses input arguments and creates a new {@code EditStudentCommand} object
  */
+
 public class EditStudentCommandParser implements Parser<EditStudentCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the EditCommand
-     * and returns an EditCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the EditStudentCommand
+     * and returns an EditStudentCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */
@@ -54,41 +55,41 @@ public class EditStudentCommandParser implements Parser<EditStudentCommand> {
                     pe);
         }
 
-        EditStudentDescriptor editPersonDescriptor = new EditStudentDescriptor();
+        EditStudentDescriptor editStudentDescriptor = new EditStudentDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+            editStudentDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+            editStudentDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
+            editStudentDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
         if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
+            editStudentDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         if (argMultimap.getValue(PREFIX_INVOLVEMENT).isPresent()) {
-            editPersonDescriptor.setInvolvement(ParserUtil.parseInvolvement(argMultimap
+            editStudentDescriptor.setInvolvement(ParserUtil.parseInvolvement(argMultimap
                     .getValue(PREFIX_INVOLVEMENT).get()));
         }
         if (argMultimap.getValue(PREFIX_FORM_CLASS).isPresent()) {
-            editPersonDescriptor.setFormClass(ParserUtil.parseFormClass(argMultimap
+            editStudentDescriptor.setFormClass(ParserUtil.parseFormClass(argMultimap
                     .getValue(PREFIX_FORM_CLASS).get()));
         }
         if (argMultimap.getValue(PREFIX_EMERGENCY_CONTACT).isPresent()) {
-            editPersonDescriptor.setEmergencyContact(
+            editStudentDescriptor.setEmergencyContact(
                     ParserUtil.parsePhone(argMultimap.getValue(PREFIX_EMERGENCY_CONTACT).get()));
         }
         if (argMultimap.getValue(PREFIX_GENDER).isPresent()) {
-            editPersonDescriptor.setGender(ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).get()));
+            editStudentDescriptor.setGender(ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).get()));
         }
-        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editStudentDescriptor::setTags);
 
-        if (!editPersonDescriptor.isAnyFieldEdited()) {
+        if (!editStudentDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditStudentCommand(index, editPersonDescriptor);
+        return new EditStudentCommand(index, editStudentDescriptor);
     }
 
     /**

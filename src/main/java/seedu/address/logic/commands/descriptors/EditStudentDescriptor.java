@@ -3,9 +3,9 @@ package seedu.address.logic.commands.descriptors;
 import java.util.Optional;
 
 import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.person.FormClass;
-import seedu.address.model.person.Gender;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.student.Address;
+import seedu.address.model.person.student.FormClass;
 
 public class EditStudentDescriptor extends EditPersonDescriptor {
     /**
@@ -14,11 +14,9 @@ public class EditStudentDescriptor extends EditPersonDescriptor {
      */
     private Phone emergencyContact;
     private FormClass formClass;
-    private Gender gender;
+    private Address address;
 
-    public EditStudentDescriptor() {
-
-    }
+    public EditStudentDescriptor() {}
 
     /**
      * Copy constructor
@@ -29,7 +27,7 @@ public class EditStudentDescriptor extends EditPersonDescriptor {
         super(toCopy);
         setEmergencyContact(toCopy.emergencyContact);
         setFormClass(toCopy.formClass);
-        setGender(toCopy.gender);
+        setAddress(toCopy.address);
     }
 
     public void setEmergencyContact(Phone phone) {
@@ -48,17 +46,17 @@ public class EditStudentDescriptor extends EditPersonDescriptor {
         return Optional.ofNullable(formClass);
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public Optional<Gender> getGender() {
-        return Optional.ofNullable(gender);
+    public Optional<Address> getAddress() {
+        return Optional.ofNullable(address);
     }
 
     @Override
     public boolean isAnyFieldEdited() {
-        return super.isAnyFieldEdited() || CollectionUtil.isAnyNonNull(emergencyContact, formClass, gender);
+        return super.isAnyFieldEdited() || CollectionUtil.isAnyNonNull(emergencyContact, formClass, address);
     }
 
     @Override
@@ -79,7 +77,7 @@ public class EditStudentDescriptor extends EditPersonDescriptor {
         return super.equals(e)
                 && getEmergencyContact().equals(e.getEmergencyContact())
                 && getFormClass().equals(e.getFormClass())
-                && getGender().equals(e.getGender());
+                && getAddress().equals(e.getAddress());
     }
 
 }

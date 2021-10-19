@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.image.Image?>
+<?import javafx.stage.Stage?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<fx:root resizable="false" title="Upcoming Meetings" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  <icons>
+    <Image url="@/images/address_book_32.png" />
+  </icons>
+  <scene>
+    <Scene>
+      <stylesheets>
+        <URL value="@Fonts.css" />
+        <URL value="@DarkTheme.css" />
+        <URL value="@Extensions.css" />
+        <URL value="@MeetingWindow.css" />
+      </stylesheets>
+      <VBox>
+        <VBox fx:id="meetingList" minWidth="340" prefWidth="340" minHeight="600" prefHeight="600" styleClass="pane-with-border">
+          <padding>
+            <Insets bottom="10" left="10" right="10" top="10"/>
+          </padding>
+          <StackPane fx:id="meetingListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+        </VBox>
+      </VBox>
+    </Scene>
+  </scene>
+</fx:root>

@@ -3,19 +3,36 @@
     "name": "Valid Student",
     "phone": "9482424",
     "email": "hans@example.com",
-    "address": "4th street",
+    "gender" : "M",
     "involvement": "Math class",
+    "address": "4th street",
     "emergencyContact" : "95614132",
     "formClass" : "4E1",
-    "gender" : "M"
+    "medicalHistory" : ""
   }, {
     "name": "Student With Invalid Phone Field",
     "phone": "948asdf2424",
     "email": "hans@example.com",
-    "address": "4th street",
+    "gender" : "N",
     "involvement": "Math class",
+    "address": "4th street",
     "emergencyContact" : "95614132",
     "formClass" : "4E1",
-    "gender" : "N"
+    "medicalHistory" : ""
+  } ],
+  "teachers": [ {
+    "name": "Valid Teacher",
+    "phone": "9482424",
+    "email": "hans@example.com",
+    "gender" : "M",
+    "involvement": "Math HOD",
+    "officeTable": "1"
+  }, {
+    "name": "Teacher With Invalid Phone Field",
+    "phone": "948asdf2424",
+    "email": "hans@example.com",
+    "gender" : "N",
+    "involvement": "Math class",
+    "officeTable": "2"
   } ]
 }

@@ -1,0 +1,24 @@
+.a-blue {
+    -fx-background-radius: 5;
+    -fx-text-fill: #eeff00 !important;
+    -fx-border-color: #eeff00;
+    -fx-border-radius: 5;
+    -fx-padding: 0 8 0 8;
+}
+
+.a-green {
+    -fx-background-radius: 5;
+    -fx-text-fill: #0cffea!important;
+    -fx-border-color: #0cffea;
+    -fx-border-radius: 5;
+    -fx-padding: 0 8 0 8;
+}
+
+.a-red {
+    -fx-background-radius: 5;
+    -fx-text-fill: #ff0000!important;
+    -fx-border-color: #ff0000;
+    -fx-border-radius: 5;
+    -fx-padding: 0 8 0 8;
+}
+

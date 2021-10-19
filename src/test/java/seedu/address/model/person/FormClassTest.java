@@ -6,6 +6,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.person.student.FormClass;
+
 public class FormClassTest {
 
     @Test
@@ -27,8 +29,6 @@ public class FormClassTest {
         // invalid FormClass
         assertFalse(FormClass.isValidFormClass("")); // empty string
         assertFalse(FormClass.isValidFormClass(" ")); // spaces only
-        assertFalse(FormClass.isValidFormClass("^")); // only non-alphanumeric characters
-        assertFalse(FormClass.isValidFormClass("4E1*")); // contains non-alphanumeric characters
         assertFalse(FormClass.isValidFormClass(" 4E1")); // contains whitespace at start
 
         // valid FormClass

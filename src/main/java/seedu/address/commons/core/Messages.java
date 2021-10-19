@@ -10,4 +10,10 @@ public class Messages {
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
 
+    public static final String MESSAGE_INVALID_STUDENT_DISPLAYED_INDEX = "The student index provided is invalid";
+    public static final String MESSAGE_STUDENTS_LISTED_OVERVIEW = "%1$d students listed!";
+
+    public static final String MESSAGE_INVALID_TEACHER_DISPLAYED_INDEX = "The teacher index provided is invalid";
+    public static final String MESSAGE_TEACHERS_LISTED_OVERVIEW = "%1$d teachers listed!";
+
 }

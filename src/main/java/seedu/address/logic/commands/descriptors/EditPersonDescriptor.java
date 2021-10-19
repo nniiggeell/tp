@@ -6,48 +6,45 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Gender;
 import seedu.address.model.person.Involvement;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
-
+/**
+ * Stores the details to edit the person with. Each non-empty field value will replace the
+ * corresponding field value of the person.
+ */
 public class EditPersonDescriptor {
-    /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
-     */
     private Name name;
     private Phone phone;
     private Email email;
-    private Address address;
+    private Gender gender;
     private Involvement involvement;
     private Set<Tag> tags;
 
     /**
      * Copy constructor.
+     * A defensive copy of {@code tags} is used internally.
      */
     public EditPersonDescriptor(EditPersonDescriptor toCopy) {
         setName(toCopy.name);
         setPhone(toCopy.phone);
         setEmail(toCopy.email);
-        setAddress(toCopy.address);
+        setGender(toCopy.gender);
         setInvolvement(toCopy.involvement);
         setTags(toCopy.tags);
     }
 
-    public EditPersonDescriptor() {
-
-    }
+    public EditPersonDescriptor() {}
 
     /**
      * Returns true if at least one field is edited.
      */
     public boolean isAnyFieldEdited() {
-        return CollectionUtil.isAnyNonNull(
-                name, phone, email, address, involvement, tags);
+        return CollectionUtil.isAnyNonNull(name, phone, email, gender, involvement, tags);
     }
 
     public void setName(Name name) {
@@ -74,12 +71,12 @@ public class EditPersonDescriptor {
         return Optional.ofNullable(email);
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
-    public Optional<Address> getAddress() {
-        return Optional.ofNullable(address);
+    public Optional<Gender> getGender() {
+        return Optional.ofNullable(gender);
     }
 
     public void setInvolvement(Involvement involvement) {
@@ -109,23 +106,13 @@ public class EditPersonDescriptor {
 
     @Override
     public boolean equals(Object other) {
-        // short circuit if same object
-        if (other == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(other instanceof EditPersonDescriptor)) {
-            return false;
-        }
-
         // state check
         EditPersonDescriptor e = (EditPersonDescriptor) other;
 
         return getName().equals(e.getName())
                 && getPhone().equals(e.getPhone())
                 && getEmail().equals(e.getEmail())
-                && getAddress().equals(e.getAddress())
+                && getGender().equals(e.getGender())
                 && getInvolvement().equals(e.getInvolvement())
                 && getTags().equals(e.getTags());
     }

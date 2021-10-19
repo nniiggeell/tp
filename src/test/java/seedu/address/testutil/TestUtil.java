@@ -7,7 +7,8 @@ import java.nio.file.Paths;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.student.Student;
+import seedu.address.model.person.teacher.Teacher;
 
 /**
  * A utility class for test cases.
@@ -33,23 +34,45 @@ public class TestUtil {
     }
 
     /**
-     * Returns the middle index of the person in the {@code model}'s person list.
+     * Returns the middle index of the student in the {@code model}'s student list.
      */
-    public static Index getMidIndex(Model model) {
-        return Index.fromOneBased(model.getFilteredPersonList().size() / 2);
+    public static Index getMidStudentIndex(Model model) {
+        return Index.fromOneBased(model.getFilteredStudentList().size() / 2);
     }
 
     /**
-     * Returns the last index of the person in the {@code model}'s person list.
+     * Returns the last index of the student in the {@code model}'s student list.
      */
-    public static Index getLastIndex(Model model) {
-        return Index.fromOneBased(model.getFilteredPersonList().size());
+    public static Index getLastStudentIndex(Model model) {
+        return Index.fromOneBased(model.getFilteredStudentList().size());
     }
 
     /**
-     * Returns the person in the {@code model}'s person list at {@code index}.
+     * Returns the student in the {@code model}'s student list at {@code index}.
      */
-    public static Person getPerson(Model model, Index index) {
-        return model.getFilteredPersonList().get(index.getZeroBased());
+    public static Student getStudent(Model model, Index index) {
+        return model.getFilteredStudentList().get(index.getZeroBased());
+    }
+
+
+    /**
+     * Returns the middle index of the teacher in the {@code model}'s teacher list.
+     */
+    public static Index getMidTeacherIndex(Model model) {
+        return Index.fromOneBased(model.getFilteredStudentList().size() / 2);
+    }
+
+    /**
+     * Returns the last index of the teacher in the {@code model}'s teacher list.
+     */
+    public static Index getLastTeacherIndex(Model model) {
+        return Index.fromOneBased(model.getFilteredStudentList().size());
+    }
+
+    /**
+     * Returns the teacher in the {@code model}'s teacher list at {@code index}.
+     */
+    public static Teacher getTeacher(Model model, Index index) {
+        return model.getFilteredTeacherList().get(index.getZeroBased());
     }
 }

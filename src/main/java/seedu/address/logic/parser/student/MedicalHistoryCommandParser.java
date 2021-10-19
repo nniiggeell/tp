@@ -12,11 +12,12 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.MedicalHistory;
+import seedu.address.model.person.student.MedicalHistory;
 
 /**
  * Parses input arguments and creates a new {@code MedicalHistoryCommand} object.
  */
+
 public class MedicalHistoryCommandParser implements Parser<MedicalHistoryCommand> {
 
     /**
