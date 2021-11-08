@@ -46,7 +46,7 @@ The rest of the App consists of four components.
 
 * [**`UI`**](#ui-component): The UI of the App.
 * [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`Model`**](#model-component): Holds the App's data in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 
@@ -251,7 +251,7 @@ As such, this command is supported by the method in the `Model` interface, namel
 Given below is an example usage scenario and how the copy mechanism behaves.
 
 Step 1. The user launches the application for the first time. The current `filteredStudentList` and `filteredTeacherList`
-will be initialized with all the students and teachers respectively from the loaded book data.
+will be initialised with all the students and teachers respectively from the loaded book data.
 
 Step 2. The user executes `copyStudent c/name` to copy all the names of the students that are currently shown in the GUI. The `copyStudent` command calls `Model#getFilteredStudentList`, loading the current list of filtered students, which in this case is all the students from the loaded book data. Afterwards, the `copyStudent` command calls its own `getCopyContent` method, which then calls `CopyCommand#getNameContent` since the user wants to copy all names of students,
 appending all the names of the students in the filtered student list to the user's clipboard.
@@ -402,7 +402,7 @@ namely the `Model#getFilteredStudentList` and `Model#getFilteredTeacherList`.
 Given below is an example usage and how the clear mechanism behaves.
 
 Step 1. The user launches the application for the first time. The current `filteredStudentList` and `filteredTeacherList`
-will be initialized with all the students and teachers respectively from the loaded book data.
+will be initialised with all the students and teachers respectively from the loaded book data.
 
 Step 2. The user executes `filterStudent math` to get all the students with the string `math` in their involvement.
 The filtered students will be stored in `Model#filteredStudent` and the list will be shown to the user.
