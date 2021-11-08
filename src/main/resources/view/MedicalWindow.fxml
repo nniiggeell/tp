@@ -10,7 +10,7 @@
 <?import javafx.scene.Scene?>
 <?import javafx.stage.Stage?>
 
-<fx:root resizable="false" title="Medical" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root resizable="false" minHeight="500" title="Medical" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <icons>
         <Image url="@/images/hospital.png" />
     </icons>
@@ -21,7 +21,7 @@
                 <URL value="@MedicalWindow.css" />
             </stylesheets>
 
-            <VBox alignment="CENTER" minWidth="400" prefWidth="400" minHeight="100"
+            <VBox alignment="CENTER" minWidth="400" prefWidth="400" minHeight="500"
                   styleClass="pane-with-border">
                 <children>
                     <Label fx:id="name" styleClass="cell_big_label" text="Label" wrapText="true">

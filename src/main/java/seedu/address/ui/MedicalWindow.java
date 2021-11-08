@@ -32,6 +32,8 @@ public class MedicalWindow extends UiPart<Stage> {
         if (student != null) {
             setContent(student);
         }
+        medicalHistory.setWrapText(true);
+        medicalHistory.setPrefWidth(320);
 
     }
 
